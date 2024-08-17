@@ -4,6 +4,8 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { cache } from "react";
+import AddToCartButton from "./addToCartButton";
+import { incrementProductQuantity } from "./actions";
 
 interface ProductPageProps {
 	params: {
@@ -55,6 +57,10 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
 					className="mt-4"
 				/>
 				<p className="py-6">{product.description}</p>
+				<AddToCartButton
+					productId={product.id}
+					incrementProductQuantity={incrementProductQuantity}
+				/>
 			</div>
 		</div>
 	);
